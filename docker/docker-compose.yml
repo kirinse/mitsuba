@@ -5,7 +5,7 @@ version: '3.8'
 services:
 
   server:
-    image: mitsuba/mitsuba:latest
+    image: ghcr.io/silkkycloud/mitsuba:latest
     hostname: mitsuba
     networks:
       - public
