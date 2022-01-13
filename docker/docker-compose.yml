@@ -48,6 +48,7 @@ services:
       - S3_ENDPOINT=${S3_ENDPOINT}
       - S3_REGION=${S3_REGION}
       - PROMETHEUS_PORT=9000
+      - RUST_BACKTRACE=1
 
 networks:
   public:
