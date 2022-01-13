@@ -30,7 +30,7 @@ RUN apk add --no-cache \
 WORKDIR /mitsuba
 
 ENV SQLX_OFFLINE="true"
-ENV RUST_LOG=mitsuba=info
+ENV RUST_LOG="mitsuba=info"
 
 COPY --from=builder /mitsuba/target/x86_64-unknown-linux-musl/release/mitsuba /mitsuba/mitsuba
 
