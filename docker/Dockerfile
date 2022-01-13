@@ -4,7 +4,7 @@
 FROM rust:1.57-alpine3.14 AS builder
 
 ENV SQLX_OFFLINE="true"
-ENV RUST_LOG=mitsuba=info
+ENV RUST_LOG="mitsuba=info"
 
 RUN apk add --no-cache \
     ca-certificates \
