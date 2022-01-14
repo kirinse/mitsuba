@@ -1,0 +1,86 @@
+# Production compose file
+
+version: '3.8'
+
+services:
+
+  server:
+    image: ghcr.io/silkkycloud/mitsuba:latest
+    hostname: mitsuba
+    networks:
+      - public
+      - postgres
+    deploy:
+      mode: replicated
+      replicas: 3
+      placement:
+        max_replicas_per_node: 1
+        constraints:
+          - "node.labels.web_server == true"
+      resources:
+        limits:
+          cpus: '2'
+          memory: 5G
+        reservations:
+          cpus: '0.2'
+          memory: 512M
+      labels:
+        # Prometheus
+        - "prometheus-job=mitsuba"
+        - "prometheus-port=9000"
+        # Traefik
+        - "traefik.enable=true"
+        # Router
+        - "traefik.http.routers.mitsuba.rule=Host(`${HOSTNAME}`)"
+        - "traefik.http.routers.mitsuba.entrypoints=websecure"
+        - "traefik.http.routers.mitsuba.tls=true"
+        - "traefik.http.routers.mitsuba.service=mitsuba-service"
+        # Service
+        - "traefik.http.services.mitsuba-service.loadbalancer.server.port=8080"
+        - "traefik.http.services.mitsuba-service.loadbalancer.sticky.cookie=true"
+        - "traefik.http.services.mitsuba-service.loadbalancer.sticky.cookie.secure=true"
+    environment:
+      - DATABASE_URL=postgresql://mitsuba:${POSTGRESQL_PASSWORD}@postgresql:26257/mitsuba
+      - ENABLE_S3_STORAGE=true
+      - S3_ACCESS_KEY_ID=${S3_KEY_ID}
+      - S3_SECRET_ACCESS_KEY=${S3_SECRET_KEY}
+      - S3_BUCKET=${S3_BUCKET_NAME}
+      - S3_ENDPOINT=${S3_ENDPOINT}
+      - S3_REGION=${S3_REGION}
+      - PROMETHEUS_PORT=9000
+      - RUST_BACKTRACE=1
+
+  postgresql:
+    image: postgres:14-alpine
+    hostname: postgresql
+    networks:
+      - public
+      - postgres
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - "node.hostname == main.web01.hel.hcloud.silkky.cloud"
+      resources:
+        limits:
+          cpus: '1'
+          memory: 4G
+        reservations:
+          cpus: '0.2'
+          memory: 512M
+    volumes:
+      - database:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=pleroma
+      - POSTGRES_USER=pleroma
+      - POSTGRES_PASSWORD=${POSTGRESQL_PASSWORD}
+
+networks:
+  public:
+    external: true
+  postgres:
+    external: true
+    
+ volumes:
+  database:   
