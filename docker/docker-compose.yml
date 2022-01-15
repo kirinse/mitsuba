@@ -82,5 +82,5 @@ networks:
   postgres:
     external: true
     
- volumes:
+volumes:
   database:   
