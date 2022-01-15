@@ -9,7 +9,6 @@ services:
     hostname: mitsuba
     networks:
       - public
-      - postgres
     deploy:
       mode: replicated
       replicas: 3
@@ -55,7 +54,6 @@ services:
     hostname: postgresql
     networks:
       - public
-      - postgres
     deploy:
       mode: replicated
       replicas: 1
@@ -72,14 +70,12 @@ services:
     volumes:
       - database:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=pleroma
-      - POSTGRES_USER=pleroma
+      - POSTGRES_DB=mitsuba
+      - POSTGRES_USER=mitsuba
       - POSTGRES_PASSWORD=${POSTGRESQL_PASSWORD}
 
 networks:
   public:
-    external: true
-  postgres:
     external: true
     
 volumes:
