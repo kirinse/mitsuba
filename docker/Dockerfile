@@ -8,6 +8,7 @@ ENV SQLX_OFFLINE="true"
 RUN apk add --no-cache \
     ca-certificates \
     musl-dev \
+    git \
     g++
 
 WORKDIR /mitsuba
@@ -24,6 +25,7 @@ FROM alpine:3.15
 RUN apk add --no-cache \
     ca-certificates \
     postgresql-client \
+    git \
     tini
 
 WORKDIR /mitsuba
