@@ -49,6 +49,7 @@ services:
       - S3_REGION=${S3_REGION}
       - PROMETHEUS_PORT=9000
       - RUST_BACKTRACE=1
+      - RUST_LOG=mitsuba=info
 
   postgresql:
     image: postgres:14-alpine
