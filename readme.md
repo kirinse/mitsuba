@@ -7,7 +7,9 @@ The intended usage is self-hosting an archive on a low budget, however the Actix
 
 Mitsuba does not support "ghost posting" as it's not an imageboard engine. This could be supported in the future with some work (mostly on the front-end) but it requires actual administration tools and an accounts system, neither of which are actually present. What few options Mitsuba has are set through the CLI.
 
-If you want to check it out in the wild, https://mitsuba.world/ always has the latest release running. Most boards there are thumbnail-only, but `/vip/` and a few others have full images and files archived.
+| Archive | Country | Cloudflare |
+|-|-|-|
+| [mitsuba.silkky.cloud](https://mitsuba.silkky.cloud) (official) |🇫🇮 FI | ✅ |
 
 ## Features
 - Very quick and easy to set up
@@ -350,3 +352,6 @@ Some features that might be added:
 
 At the moment a full imageboard engine with posting and administration is considered out of scope, however if you are interested in working on that, you should make an issue to discuss it.
 
+# Thanks
+
+I would like to thank the original developer behind the project.
