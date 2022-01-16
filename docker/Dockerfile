@@ -15,7 +15,7 @@ WORKDIR /mitsuba
 
 COPY . .
 
-RUN cargo build --target x86_64-unknown-linux-musl --release
+RUN cargo build --target x86_64-unknown-linux-musl --release --all-features
 
 ####################################################################################################
 ## Final image
