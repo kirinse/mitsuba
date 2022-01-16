@@ -16,7 +16,6 @@ jobs:
           - arm-unknown-linux-musleabihf
           - x86_64-pc-windows-msvc
           - x86_64-apple-darwin
-          - x86_64-unknown-freebsd
         include:
           - os: ubuntu-latest
             target: x86_64-unknown-linux-musl
@@ -62,13 +61,6 @@ jobs:
             cross: false
             strip: true
             compress: true
-          - os: ubuntu-latest
-            target: x86_64-unknown-freebsd
-            artifact_name: target/x86_64-unknown-freebsd/release/mitsuba
-            release_name: x86_64-unknown-freebsd
-            cross: true
-            strip: false
-            compress: false
 
     steps:
       - name: Checkout code
