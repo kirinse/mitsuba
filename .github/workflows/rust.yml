@@ -64,7 +64,7 @@ jobs:
             compress: true
           - os: ubuntu-latest
             target: x86_64-unknown-freebsd
-            artifact_name: target/x86_64-unknown-freebsd/release/miniserve
+            artifact_name: target/x86_64-unknown-freebsd/release/mitsuba
             release_name: x86_64-unknown-freebsd
             cross: true
             strip: false
