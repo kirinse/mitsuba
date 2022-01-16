@@ -31,6 +31,7 @@ WORKDIR /mitsuba
 ENV SQLX_OFFLINE="true"
 
 COPY --from=builder /mitsuba/target/x86_64-unknown-linux-musl/release/mitsuba /mitsuba/mitsuba
+COPY --from=builder /mitsuba/log4rs.yml /mitsuba/log4rs.yml
 
 # Creat persistent data directory
 RUN mkdir -p /data
