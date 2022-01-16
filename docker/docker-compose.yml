@@ -9,6 +9,7 @@ services:
     hostname: mitsuba
     networks:
       - public
+      - backend
     deploy:
       mode: replicated
       replicas: 3
