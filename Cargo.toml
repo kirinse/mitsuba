@@ -1,8 +1,8 @@
 [package]
 name = "mitsuba"
-version = "1.11.0"
-authors = ["reasv", "moot", "cerda"]
-edition = "2018"
+version = "1.12.0"
+authors = ["reasv", "cerda <cerdamods@protonmail.com>", "moot"]
+edition = "2021"
 license = "AGPL-3.0"
 keywords = ["web", "archive", "download", "downloader", "crawler"]
 repository = "https://github.com/silkkycloud/mitsuba"
@@ -31,10 +31,10 @@ instant = "0.1.12"
 regex = "1"
 base64 = "0"
 base32 = "0"
-actix-web = { version = "4.0.0-beta.5", features = ["rustls"] }
-actix-files = "0.6.0-beta.4"
-clap = { version = "3.0.6", features = ["derive"] }
-clap_derive = "3.0.6"
+actix-web = { version = "4.0.0-beta.20", features = ["rustls"] }
+actix-files = "0.6.0-beta.14"
+clap = { version = "3", features = ["derive"] }
+clap_derive = "3"
 handlebars = { version = "4", features = ["dir_source"] }
 unicode-truncate = "0"
 handlebars_misc_helpers = {version = "0.12", features = ["string", "json"], default-features = false }
@@ -43,7 +43,7 @@ sqlx = { version = "0.5", features = [ "postgres", "macros", "migrate", "runtime
 rust-embed = "5.9.0"
 mime_guess = "2.0.3"
 sha2 = "0.10.1"
-rust-s3 = { version = "0.28.0", features = ["tokio-rustls-tls"], default-features = false}
+rust-s3 = { version = "0.28.0", features = ["tokio-rustls-tls"], default-features = false }
 dashmap = "5.0.0"
 weighted-rs = "0.1.3"
 metrics = "0.17.1"
